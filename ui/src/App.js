@@ -1,11 +1,13 @@
-import { h, Component } from 'preact';
+import { h } from 'preact';
+import Router from 'preact-router';
 
-class App extends Component {
-  render() {
-    return (
-      <h1>Welcome to Snack Chat</h1>
-    );
-  }
-}
+import Lobby from './Lobby';
+import Chat from './Chat';
+import Error404 from './Error404';
 
-export default App;
+export default () =>
+  <Router>
+    <Lobby path="/" />
+    <Chat path="/:chatroom" />
+    <Error404 default />
+  </Router>;
