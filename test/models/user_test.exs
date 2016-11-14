@@ -27,7 +27,13 @@ defmodule SnackChat.UserTest do
     assert user == User.from_token(token)
   end
 
-  test "when token not found returns error" do
-    assert :error = User.from_token("bad_token")
+  test "when token not found returns nil" do
+    refute User.from_token("bad_token")
+  end
+
+  test "when user not found returns nil" do
+    user = %User{id: 1}
+    token = User.token(user)
+    refute User.from_token(token)
   end
 end
