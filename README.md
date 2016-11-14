@@ -1,19 +1,16 @@
 # SnackChat
 
-To start your Phoenix app:
+An app to chat about your favorite snacks.
 
-  * Install dependencies with `mix deps.get`
-  * Create and migrate your database with `mix ecto.create && mix ecto.migrate`
-  * Start Phoenix endpoint with `mix phoenix.server`
+## Running the app
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+* Install elixir dependencies with `mix deps.get`
+* Create and migrate the database with `mix ecto.create && mix ecto.migrate`
+* Install javascript dependencies with `cd ui && npm install`
+* Install the `foreman` gem to run local server with `gem install foreman`
+* Start the server with `foreman s` - your browser will open the app automatically
 
-Ready to run in production? Please [check our deployment guides](http://www.phoenixframework.org/docs/deployment).
+## Running the tests
 
-## Learn more
-
-  * Official website: http://www.phoenixframework.org/
-  * Guides: http://phoenixframework.org/docs/overview
-  * Docs: https://hexdocs.pm/phoenix
-  * Mailing list: http://groups.google.com/group/phoenix-talk
-  * Source: https://github.com/phoenixframework/phoenix
+* Run elixir tests with `mix tests`
+* Run javascript tests with `cd ui && npm test`
