@@ -11,6 +11,24 @@ if (typeof SVGElement === 'undefined') {
   window.SVGElement = function() {};
 }
 
+if (!window.localStorage) {
+  window.localStorage = {
+    store: {},
+    getItem(key) {
+      return this.store[key];
+    },
+    setItem(key, value) {
+      this.store[key] = value;
+    },
+    clear() {
+      this.store = {};
+    },
+    removeItem(key) {
+      this.store[key] = undefined;
+    },
+  };
+}
+
 // fetch() polyfill for making API calls.
 require('whatwg-fetch');
 
