@@ -14,6 +14,7 @@ defmodule SnackChat do
       supervisor(SnackChat.Endpoint, []),
       # Start your own worker by calling: SnackChat.Worker.start_link(arg1, arg2, arg3)
       # worker(SnackChat.Worker, [arg1, arg2, arg3]),
+      supervisor(SnackChat.UsersSupervisor, []),
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html

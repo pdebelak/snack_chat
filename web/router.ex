@@ -7,5 +7,8 @@ defmodule SnackChat.Router do
 
   scope "/api", SnackChat do
     pipe_through :api
+
+    resources "/users", UserController, except: [:new, :edit]
+    resources "/rooms", RoomController, except: [:new, :edit]
   end
 end
