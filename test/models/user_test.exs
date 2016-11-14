@@ -15,4 +15,19 @@ defmodule SnackChat.UserTest do
     changeset = User.changeset(%User{}, @invalid_attrs)
     refute changeset.valid?
   end
+
+  test "token creates token for user" do
+    user = %User{id: 1}
+    assert User.token(user)
+  end
+
+  test "token can lookup user" do
+    user = Repo.insert! %User{}
+    token = User.token(user)
+    assert user == User.from_token(token)
+  end
+
+  test "when token not found returns error" do
+    assert :error = User.from_token("bad_token")
+  end
 end
