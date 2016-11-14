@@ -14,16 +14,16 @@ if (typeof SVGElement === 'undefined') {
 if (!window.localStorage) {
   window.localStorage = {
     store: {},
-    getItem(key) {
+    getItem: function(key) {
       return this.store[key];
     },
-    setItem(key, value) {
+    setItem: function(key, value) {
       this.store[key] = value;
     },
-    clear() {
+    clear: function() {
       this.store = {};
     },
-    removeItem(key) {
+    removeItem: function(key) {
       this.store[key] = undefined;
     },
   };
