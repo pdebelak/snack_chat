@@ -12,10 +12,6 @@ export class User {
   setUsername(username) {
     this.storage.setItem(usernameKey, username);
   }
-
-  logout() {
-    this.storage.removeItem(usernameKey);
-  }
 }
 
 export default new User(window.localStorage);

@@ -23,15 +23,10 @@ export default class extends Component {
     this.setState({ username: User.username });
   }
 
-  logout() {
-    User.logout();
-    this.setState({ username: null });
-  }
-
   render(_, { username }) {
     return (
       <div>
-        <Header username={username} logout={() => this.logout()} />
+        <Header username={username} />
         <div class="section">
           <div class="container">
             <Router>

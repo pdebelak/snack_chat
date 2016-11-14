@@ -19,9 +19,3 @@ test('can set the username', () => {
   user.setUsername(username);
   expect(user.username).toEqual(username);
 });
-
-test('logout removes username', () => {
-  user.setUsername('the-username');
-  user.logout();
-  expect(user.username).toEqual(undefined);
-});

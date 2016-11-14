@@ -8,12 +8,6 @@ export default class extends Component {
     this.setState({ navOpen: false });
   }
 
-  logout() {
-    this.closeNav();
-    this.props.logout();
-    route('/');
-  }
-
   goToUsername() {
     this.closeNav();
     route('/username');
@@ -40,7 +34,6 @@ export default class extends Component {
     return (
       <div class={{ 'nav-right': true, 'nav-menu': true, 'is-active': navOpen }}>
         <a class="nav-item" onClick={() => this.goToUsername()}>{username}</a>
-        <a class="nav-item" onClick={() => this.logout()}>Logout</a>
       </div>
     );
   }
