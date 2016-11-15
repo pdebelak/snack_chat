@@ -3,6 +3,7 @@ defmodule SnackChat.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+    plug SnackChat.LoadUser
   end
 
   pipeline :browser do
@@ -12,7 +13,7 @@ defmodule SnackChat.Router do
   scope "/api", SnackChat do
     pipe_through :api
 
-    resources "/users", UserController, only: [:create, :update]
+    resources "/users", UserController, only: [:create]
     resources "/rooms", RoomController, only: [:index, :show, :create]
   end
 

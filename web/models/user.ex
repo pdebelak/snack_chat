@@ -31,7 +31,7 @@ defmodule SnackChat.User do
   def from_token(token) do
     case Phoenix.Token.verify(SnackChat.Endpoint, @token_key, token) do
       {:ok, user_id} -> SnackChat.Repo.get(__MODULE__, user_id)
-      {:error, :invalid} -> nil
+      {:error, _} -> nil
     end
   end
 end

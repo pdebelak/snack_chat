@@ -19,8 +19,9 @@ export default class extends Component {
   }
 
   updateUsername(username) {
-    User.setUsername(username);
-    this.setState({ username: User.username });
+    return User.login(username).then(response =>
+      this.setState({ username: response.username })
+    );
   }
 
   render(_, { username }) {

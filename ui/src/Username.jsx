@@ -22,8 +22,9 @@ export default class extends Component {
   setUsername(e) {
     e.preventDefault();
     if (this.state.username) {
-      this.props.updateUsername(this.state.username);
-      this.redirect();
+      this.props.updateUsername(this.state.username).then(() =>
+        this.redirect()
+      );
     } else {
       this.setState({ error: 'Please enter a username.' });
     }
