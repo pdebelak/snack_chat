@@ -29,6 +29,10 @@ defmodule SnackChat.ConnCase do
 
       # The default endpoint for testing
       @endpoint SnackChat.Endpoint
+
+      defp with_user(conn, user) do
+        put_req_header conn, "authentication", "Bearer #{SnackChat.User.token(user)}"
+      end
     end
   end
 

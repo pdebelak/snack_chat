@@ -3,6 +3,7 @@ import { route } from 'preact-router';
 
 import TextField from './TextField';
 import User from './User';
+import Request from './Request';
 
 export default class extends Component {
   componentDidMount() {
@@ -14,7 +15,10 @@ export default class extends Component {
   startRoom(e) {
     e.preventDefault();
     if (this.state.room) {
-      route(`/chat/${this.state.room}`);
+      Request.post('/api/rooms', { room: { name: this.state.room } })
+        .then(response =>
+          route(`/chat/${response.name}`)
+        );
     } else {
       this.setState({ error: 'Please enter a snack name.' });
     }

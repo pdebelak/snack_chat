@@ -7,7 +7,6 @@ defmodule SnackChat.LoadUser do
     token = conn.req_headers
     |> Enum.find(fn {header, _value} -> header == "authentication" end)
     |> extract_token()
-    IO.puts(token)
     conn
     |> Plug.Conn.assign(:user, SnackChat.User.from_token(token))
   end

@@ -4,10 +4,7 @@ defmodule SnackChat.UserController do
   alias SnackChat.User
 
   def create(conn, %{"user" => user_params}) do
-    changeset = case conn.assigns[:user] do
-      nil -> User.changeset(%User{}, user_params)
-      user -> User.changeset(user, user_params)
-    end
+    changeset = set_changeset(conn.assigns[:user], user_params)
 
     case Repo.insert_or_update(changeset) do
       {:ok, user} ->
@@ -19,4 +16,7 @@ defmodule SnackChat.UserController do
         |> render(SnackChat.ChangesetView, "error.json", changeset: changeset)
     end
   end
+
+  defp set_changeset(nil, user_params), do: User.changeset(%User{}, user_params)
+  defp set_changeset(user, user_params), do: User.changeset(user, user_params)
 end

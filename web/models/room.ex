@@ -16,4 +16,9 @@ defmodule SnackChat.Room do
     |> validate_required([:name])
     |> unique_constraint(:name)
   end
+
+  def by_name(nil), do: nil
+  def by_name(name) do
+    SnackChat.Repo.get_by(__MODULE__, name: name)
+  end
 end

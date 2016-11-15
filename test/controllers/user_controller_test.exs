@@ -24,7 +24,7 @@ defmodule SnackChat.UserControllerTest do
   test "updates and renders chosen resource when data is valid and authentication header is present", %{conn: conn} do
     user = Repo.insert! %User{}
     conn = conn
-    |> put_req_header("authentication", "Bearer #{User.token(user)}")
+    |> with_user(user)
     |> post(user_path(conn, :create), user: @valid_attrs)
     assert json_response(conn, 200)["username"] == @valid_attrs[:username]
     assert Repo.get(User, user.id).username == @valid_attrs[:username]
@@ -34,7 +34,7 @@ defmodule SnackChat.UserControllerTest do
   test "does not update chosen resource and renders errors when data is invalid and authentication header is present", %{conn: conn} do
     user = Repo.insert! %User{}
     conn = conn
-    |> put_req_header("authentication", "Bearer #{User.token(user)}")
+    |> with_user(user)
     |> post(user_path(conn, :create), user: @invalid_attrs)
     assert json_response(conn, 422)["errors"] != %{}
     assert length(Repo.all(User)) == 1
