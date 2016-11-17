@@ -4,6 +4,7 @@ import { route } from 'preact-router';
 import TextField from './TextField';
 import User from './User';
 import Request from './Request';
+import socket from './socket';
 
 export default class extends Component {
   componentDidMount() {

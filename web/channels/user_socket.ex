@@ -2,7 +2,8 @@ defmodule SnackChat.UserSocket do
   use Phoenix.Socket
 
   ## Channels
-  # channel "room:*", SnackChat.RoomChannel
+  channel "lobby:lobby", SnackChat.LobbyChannel
+  channel "room:*", SnackChat.RoomChannel
 
   ## Transports
   transport :websocket, Phoenix.Transports.WebSocket
